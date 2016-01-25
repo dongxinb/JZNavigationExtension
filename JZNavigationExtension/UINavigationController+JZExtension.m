@@ -481,7 +481,9 @@ JZExtensionBarImplementation
     }
     
     UINavigationController *navigationController = (UINavigationController *)[self __parent];
-    
+    if (!navigationController.interactivePopedViewController) {
+        return ;
+    }
     BOOL popedViewControllerNaviBarBgHidden = navigationController.interactivePopedViewController.navigationBarBackgroundHidden;
     if (popedViewControllerNaviBarBgHidden != navigationController.visibleViewController.navigationBarBackgroundHidden) {
         CGFloat _percentComplete = popedViewControllerNaviBarBgHidden ? percentComplete : 1- percentComplete;
